@@ -2,7 +2,10 @@
 # See https://dart.dev/tools/pub/glossary#lockfile
 packages:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
   _flutterfire_internals:
     dependency: transitive
     description:
@@ -27,6 +30,9 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.1"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   async:
     dependency: transitive
@@ -333,6 +339,9 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   leak_tracker:
     dependency: transitive
@@ -391,7 +400,10 @@ packages:
     source: hosted
     version: "1.16.0"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
   nested:
     dependency: transitive
     description:
@@ -418,7 +430,10 @@ packages:
     source: hosted
     version: "1.9.1"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
   path_provider_linux:
     dependency: transitive
     description:
@@ -539,6 +554,9 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.1"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   sky_engine:
     dependency: transitive
@@ -610,7 +628,10 @@ packages:
     source: hosted
     version: "0.7.4"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
   typed_data:
     dependency: transitive
     description:
@@ -691,6 +712,9 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.5.1"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   vector_math:
     dependency: transitive
@@ -758,6 +782,9 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 sdks:
   dart: ">=3.8.1 <4.0.0"

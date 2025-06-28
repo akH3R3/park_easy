@@ -42,6 +42,9 @@ dependencies:
   flutter_dotenv:
   geolocator:
   provider:
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
   # The following adds the Cupertino Icons font to your application.
@@ -79,6 +82,9 @@ flutter:
     - .env
     - assets/3d_model/splash.glb
     - assets/images/default_profile.jpg
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   #   - images/a_dot_ham.jpeg
 

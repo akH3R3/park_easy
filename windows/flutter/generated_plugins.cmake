@@ -4,7 +4,10 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
   firebase_core
   geolocator_windows
   url_launcher_windows

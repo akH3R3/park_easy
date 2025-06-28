@@ -6,9 +6,12 @@ import FlutterMacOS
 import Foundation
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
 =======
+=======
+>>>>>>> Stashed changes
 import app_settings
 import firebase_core
 import firebase_database
