@@ -25,6 +25,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.1"
+
   async:
     dependency: transitive
     description:
@@ -153,6 +154,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.9.3+4"
+=
   firebase_auth:
     dependency: "direct main"
     description:
@@ -233,6 +235,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+
   flutter:
     dependency: "direct main"
     description: flutter
@@ -384,6 +387,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+
   http_parser:
     dependency: transitive
     description:
@@ -456,6 +460,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.1+1"
+
   leak_tracker:
     dependency: transitive
     description:
@@ -576,6 +581,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.6"
+
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -664,6 +670,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.1"
+
   sky_engine:
     dependency: transitive
     description: flutter
@@ -813,6 +820,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.5.1"
+
   vector_math:
     dependency: transitive
     description:
@@ -880,3 +888,4 @@ packages:
 sdks:
   dart: ">=3.8.1 <4.0.0"
   flutter: ">=3.27.0"
+
