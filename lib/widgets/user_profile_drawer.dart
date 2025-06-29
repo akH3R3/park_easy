@@ -9,8 +9,9 @@ import '../screens/profile_screen.dart';
 class UserProfileDrawer extends StatelessWidget {
   final String email;
   final File? profileImage;
+  final String name;
 
-  const UserProfileDrawer({super.key, required this.email,required this.profileImage});
+  const UserProfileDrawer({super.key, required this.email,required this.profileImage, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class UserProfileDrawer extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              "User Name",
+              name,
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Row(

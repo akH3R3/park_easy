@@ -63,7 +63,7 @@ class UserHomeScreen extends StatelessWidget {
         ),
         endDrawer: UserProfileDrawer(
           email: email,
-          profileImage: provider.profileImage,
+          profileImage: provider.profileImage, name: provider.userName ?? "John Doe",
         ),
         endDrawerEnableOpenDragGesture: false,
       ),

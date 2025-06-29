@@ -32,7 +32,7 @@ class UserBottomNavBar extends StatelessWidget {
         if (index == 1) {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => const UserHistoryScreen()),
+            MaterialPageRoute(builder: (_) => UserHistoryScreen()),
           ).then((_) {
             bottomNav.setIndex(0);
           });

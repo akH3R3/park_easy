@@ -9,4 +9,9 @@ class ProfileImageService {
     }
     return null;
   }
+  static Future<String?> getUserName() async{
+    final prefs = await SharedPreferences.getInstance();
+    final userName = prefs.getString('name');
+    return userName;
+  }
 }

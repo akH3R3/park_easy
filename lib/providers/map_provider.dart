@@ -18,9 +18,11 @@ class MapProvider extends ChangeNotifier {
   double maxDistance = 100000;
   double maxPrice = 100;
   File? profileImage;
+  String? userName;
   bool _initialized = false;
 
   bool get isInitialized => _initialized;
+
   List<ParkingSpace> get parkingLots => customParkingLots;
 
   Future<void> init() async {
@@ -30,7 +32,19 @@ class MapProvider extends ChangeNotifier {
 
   Future<void> _loadProfileImage() async {
     final image = await ProfileImageService.getProfileImage();
+    final name = await ProfileImageService.getUserName();
     profileImage = image;
+    userName = name;
+    notifyListeners();
+  }
+
+  void updateProfileImage(File? profileImage) {
+    this.profileImage = profileImage;
+    notifyListeners();
+  }
+
+  void updateUserName(String name) {
+    userName = name;
     notifyListeners();
   }
 
@@ -118,8 +132,6 @@ class MapProvider extends ChangeNotifier {
         searchCenter = location;
 
         mapController?.animateCamera(CameraUpdate.newLatLngZoom(location, 15));
-
-        // Remove old search marker, add new one
         markers.removeWhere((m) => m.markerId.value == 'search-location');
         markers.add(
           Marker(
