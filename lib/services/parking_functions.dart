@@ -55,6 +55,7 @@ class ParkingFunctions {
     final bookings = <Booking>[];
     for (final child in snapshot.children) {
       final map = Map<String, dynamic>.from(child.value as Map);
+      map['id'] = child.key;
       bookings.add(Booking.fromMap(map));
     }
     return bookings;
