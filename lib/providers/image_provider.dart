@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ImageUploadProvider with ChangeNotifier {
-  final String serverIp = 'http://192.168.29.48:3000';
+  final String serverIp = dotenv.env['SERVER_IP'] ?? '';
 
   List<File> _images = [];
   List<String> _uploadedImages = [];
