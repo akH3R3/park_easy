@@ -32,14 +32,12 @@ class ParkingDetailsScreen extends StatefulWidget {
   State<ParkingDetailsScreen> createState() => _ParkingDetailsScreenState();
 }
 
-final ip = dotenv.env['SERVER_IP'];
-
 class _ParkingDetailsScreenState extends State<ParkingDetailsScreen> {
   final ParkingFunctions _parkingService = ParkingFunctions();
   bool _isBooking = false;
   int _selectedHours = 1;
 
-  final String serverUrl = 'http://$ip:3000';
+  final String serverUrl = 'https://park-easy.onrender.com';
   List<String> imageUrls = [];
   List<ApplicationMeta> upiApps = [];
   UpiPay upiPay = UpiPay();

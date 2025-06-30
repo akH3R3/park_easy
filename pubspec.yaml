@@ -84,11 +84,11 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   assets:
-    - .env
     - assets/3d_model/splash.glb
     - assets/images/default_profile.jpg
     - assets/voice/hey_park_easy.ppn
     - assets/voice/your_file.json
+    - .env
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
