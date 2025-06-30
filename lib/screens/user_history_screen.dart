@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:park_easy/services/parking_functions.dart';
+import 'package:park_easy/widgets/user_shimmer.dart';
 import '../models/review.dart';
 import '../models/booking_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -151,7 +152,7 @@ class HistoryUserScreenState extends State<HistoryUserScreen>
                   : _parkingService.getBookingsByUser(_userId!),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(child: UserShimmer());
                 }
                 if (!snapshot.hasData || snapshot.data!.isEmpty) {
                   return const Center(

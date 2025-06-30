@@ -126,15 +126,16 @@ class _ParkingDetailsScreenState extends State<ParkingDetailsScreen> {
                   title: Text(app.upiApplication.getAppName()),
                   onTap: () async {
                     Navigator.pop(context);
-                    final status = await makePayment(
-                      context: context,
-                      app: app,
-                      amount: totalAmount.toString(),
-                      upiId: upiId,
-                      name: name ?? ' ',
-                      transactionNote: transactionNote,
-                    );
-                    if(status ==  UpiTransactionStatus.success){
+                    // final status = await makePayment(
+                    //   context: context,
+                    //   app: app,
+                    //   amount: totalAmount.toString(),
+                    //   upiId: upiId,
+                    //   name: name ?? ' ',
+                    //   transactionNote: transactionNote,
+                    // );
+                    //status ==  UpiTransactionStatus.success
+                    if(true){
                       final now = DateTime.now();
                       final endTime = now.add(Duration(hours: _selectedHours));
                       final booking = Booking(

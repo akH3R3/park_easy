@@ -52,6 +52,11 @@ dependencies:
   flutter_local_notifications:
   url_launcher:
   intl:
+  shimmer:
+  dialogflow_flutter:
+  permission_handler:
+  porcupine_flutter:
+  speech_to_text:
 
 dev_dependencies:
   flutter_test:
@@ -82,6 +87,8 @@ flutter:
     - .env
     - assets/3d_model/splash.glb
     - assets/images/default_profile.jpg
+    - assets/voice/hey_park_easy.ppn
+    - assets/voice/your_file.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

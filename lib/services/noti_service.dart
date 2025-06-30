@@ -1,3 +1,4 @@
+import 'package:permission_handler/permission_handler.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:flutter_timezone/flutter_timezone.dart';
@@ -11,6 +12,10 @@ class NotiService {
 
   Future<void> initNotification() async {
     if (_isInitialized) return;
+    var status = await Permission.notification.status;
+    if (!status.isGranted) {
+      await Permission.notification.request();
+    }
 
     tz.initializeTimeZones();
     final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
@@ -51,7 +56,7 @@ class NotiService {
     final now = tz.TZDateTime.now(tz.local);
     var scheduleDate = tz.TZDateTime(tz.local,now.year,now.month,now.day,hour,min);
     print(scheduleDate);
-    await notificationPlugin.zonedSchedule(id, title, body, scheduleDate, notificationDetails(), androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle);
+    await notificationPlugin.zonedSchedule(id, title, body, scheduleDate, notificationDetails(), androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle, uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.wallClockTime);
     print('Scheduled Success');
   }
 
