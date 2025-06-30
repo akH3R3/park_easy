@@ -10,7 +10,7 @@ class ParkingList extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<MapProvider>(context);
 
-    return ListView.builder(
+    return provider.parkingLots.isNotEmpty ? ListView.builder(
       itemCount: provider.parkingLots.length,
       itemBuilder: (context, index) {
         final lot = provider.parkingLots[index];
@@ -207,6 +207,6 @@ class ParkingList extends StatelessWidget {
           ),
         );
       },
-    );
+    ) : Center(child: Text('No Parking Available'),);
   }
 }
