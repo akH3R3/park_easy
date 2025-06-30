@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:park_easy/providers/booking_provider.dart';
 import 'package:park_easy/providers/map_provider.dart';
 import 'package:park_easy/providers/profile_provider.dart';
 import 'package:park_easy/providers/user_bottom_navbar.dart';
@@ -28,7 +27,6 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => MapProvider()..init()),
         ChangeNotifierProvider(create: (_) => UserBottomNavBarProvider()),
         ChangeNotifierProvider(create: (_) => ProfileProvider()),
-        ChangeNotifierProvider(create: (_) => BookingProvider()),
       ],
       child: MyApp(),
     ),

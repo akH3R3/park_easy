@@ -6,7 +6,7 @@ class Booking {
   final DateTime startTime;
   final DateTime endTime;
   final double cost;
-  final String status;
+  late String status;
 
   Booking({
     required this.id,

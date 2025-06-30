@@ -125,7 +125,7 @@ class _ParkingDetailsScreenState extends State<ParkingDetailsScreen> {
                   leading: SizedBox(width: 40, height: 40, child: app.iconImage(20)),
                   title: Text(app.upiApplication.getAppName()),
                   onTap: () async {
-                    Navigator.pop(context); // Close the modal
+                    Navigator.pop(context);
                     final status = await makePayment(
                       context: context,
                       app: app,
@@ -139,7 +139,6 @@ class _ParkingDetailsScreenState extends State<ParkingDetailsScreen> {
                       final endTime = now.add(Duration(hours: _selectedHours));
                       final booking = Booking(
                         id: '',
-                        // Firebase will set this
                         userId: user.uid,
                         parkingSpaceId: widget.parkingSpace.id,
                         parkingSpaceAddress: widget.parkingSpace.address,
@@ -149,11 +148,8 @@ class _ParkingDetailsScreenState extends State<ParkingDetailsScreen> {
                         status: 'active',
                       );
                       await _parkingService.addBooking(booking);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Booking added to your ongoing history!')),
-                      );
-                      Navigator.pop(context);
                       NotiService().scheduleNotificationBefore20Min(_selectedHours);
+                      //Navigator.pop(context);
                     }
                   },
                 );
