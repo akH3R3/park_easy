@@ -1,8 +1,7 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:park_easy/screens/dummy_owner_screen.dart';
-import 'package:park_easy/screens/dummy_user_screen.dart';
+import 'package:park_easy/screens/user_home_screen.dart';
 
 class AuthScreen extends StatefulWidget {
   @override
@@ -109,10 +108,10 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
-  void _navigateAfterLogin() {
+  void _navigateAfterLogin(String email) {
     Widget targetScreen = _selectedUserType == 'owner'
         ? DummyOwnerScreen()
-        : DummyUserScreen();
+        : UserHomeScreen(email: email);
 
     Navigator.pushReplacement(
       context,
@@ -149,7 +148,7 @@ class _AuthScreenState extends State<AuthScreen> {
           password: password,
         );
       }
-      _navigateAfterLogin();
+      _navigateAfterLogin(email);
     } on FirebaseAuthException catch (e) {
       showSnackBar(e.message ?? "Authentication failed.");
     } finally {

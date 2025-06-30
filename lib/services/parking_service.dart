@@ -17,9 +17,10 @@ class ParkingService {
     required double maxDistance,
     required double maxPrice,
   }) async {
-    return ParkingServiceResult(lots: [], markers: {});
+    //return ParkingServiceResult(lots: [], markers: {});
     final databaseRef = FirebaseDatabase.instance.ref('parking_spaces');
     final snapshot = await databaseRef.get();
+    print('🎉');
 
     if (!snapshot.exists) return ParkingServiceResult(lots: [], markers: {});
 
@@ -31,15 +32,19 @@ class ParkingService {
       final space = ParkingSpace.fromMap(
         Map<String, dynamic>.from(entry.value),
       );
-
-      final distance = Geolocator.distanceBetween(
+      var distance = Geolocator.distanceBetween(
         lat,
         lng,
         space.latitude,
         space.longitude,
       );
+      if(space.address == "Barnala"){
+        print(maxPrice);
+        print(space.pricePerHour);
+      }
 
       if (space.pricePerHour <= maxPrice && distance <= maxDistance) {
+        print('🌟');
         nearby.add(space);
         final isBooked = space.availableSpots == 0;
         newMarkers.add(
