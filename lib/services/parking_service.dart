@@ -20,7 +20,7 @@ class ParkingService {
     required double maxDistance,
     required double maxPrice,
   }) async {
-    return ParkingServiceResult(lots: [], markers: {});
+    //return ParkingServiceResult(lots: [], markers: {});
     final databaseRef = FirebaseDatabase.instance.ref('parking_spaces');
     final snapshot = await databaseRef.get();
 
@@ -78,7 +78,6 @@ class ParkingService {
     return spaces;
   }
 
-  // Get parking spaces by owner (one-time fetch)
   Future<List<ParkingSpace>> getParkingSpacesByOwner(String ownerId) async {
     final ref = _db.child('parking_spaces');
     final snapshot = await ref.orderByChild('ownerId').equalTo(ownerId).get();
@@ -92,7 +91,6 @@ class ParkingService {
     return spaces;
   }
 
-  // Real-time updates for owner's parking spaces
   Stream<List<ParkingSpace>> getParkingSpacesByOwnerStream(String ownerId) {
     final ref = _db.child('parking_spaces').orderByChild('ownerId').equalTo(ownerId);
     return ref.onValue.map((event) {
@@ -106,8 +104,6 @@ class ParkingService {
     });
   }
 
-
-  // Get bookings by user
   Future<List<Booking>> getBookingsByUser(String userId) async {
     final ref = _db.child('bookings');
     final snapshot = await ref.orderByChild('userId').equalTo(userId).get();
@@ -120,13 +116,11 @@ class ParkingService {
     return bookings;
   }
 
-  // Add a booking
   Future<void> addBooking(Booking booking) async {
     final newRef = _db.child('bookings').push();
     await newRef.set(booking.toMap());
   }
 
-  // Add a parking space (with UPI ID)
   Future<String?> addParkingSpace({
     required String ownerId,
     required String address,
@@ -152,7 +146,6 @@ class ParkingService {
     return newRef.key;
   }
 
-  // Update parking space (price, slots, upiId, etc.)
   Future<void> updateParkingSpace(
       String parkingSpaceId, {
         double? pricePerHour,
@@ -166,17 +159,14 @@ class ParkingService {
     await _db.child('parking_spaces/$parkingSpaceId').update(updates);
   }
 
-  // Delete parking space
   Future<void> deleteParkingSpace(String parkingSpaceId) async {
     await _db.child('parking_spaces/$parkingSpaceId').remove();
   }
 
-  // Mark booking as completed
   Future<void> completeBooking(String bookingId) async {
     await _db.child('bookings/$bookingId').update({'status': 'completed'});
   }
 
-  // Fetch reviews for a parking space
   Future<List<Review>> getReviewsForParkingSpace(String parkingSpaceId) async {
     final ref = _db.child('parking_spaces/$parkingSpaceId/reviews');
     final snapshot = await ref.get();
@@ -196,8 +186,6 @@ class ParkingService {
     return reviews;
   }
 
-
-  // Add a review to a parking space
   Future<void> addReviewToParkingSpace(String parkingSpaceId, Review review) async {
     final ref = _db.child('parking_spaces/$parkingSpaceId/reviews').push();
     await ref.set(review.toMap());
@@ -211,7 +199,6 @@ class ParkingService {
     }
   }
 
-  // Check if user has already reviewed this parking space
   Future<bool> hasUserReviewed(String parkingSpaceId, String userId) async {
     final ref = _db.child('parking_spaces/$parkingSpaceId/reviews');
     final snapshot = await ref.get();

@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
@@ -65,14 +67,69 @@ class MapProvider extends ChangeNotifier {
   }
 
   Future<void> fetchParkingLots(double lat, double lng) async {
-    final data = await ParkingService.fetchAndFilterParkingSpaces(
-      lat: lat,
-      lng: lng,
-      maxDistance: maxDistance,
-      maxPrice: maxPrice,
-    );
-    markers = data.markers;
-    customParkingLots = data.lots;
+    //final data = await ParkingService.fetchAndFilterParkingSpaces(
+    //   lat: lat,
+    //   lng: lng,
+    //   maxDistance: maxDistance,
+    //   maxPrice: maxPrice,
+    // );
+    // markers = data.markers;
+    // customParkingLots = data.lots;
+    try {
+      final databaseRef = FirebaseDatabase.instance.ref('parking_spaces');
+      final snapshot = await databaseRef.get();
+
+      if (!snapshot.exists) {
+        return;
+      }
+
+      final data = snapshot.value as Map<dynamic, dynamic>;
+      List<ParkingSpace> nearby = [];
+      Set<Marker> newMarkers =
+      markers
+          .where((m) => m.markerId.value == 'search-location')
+          .toSet();
+
+      for (var entry in data.entries) {
+        final space = ParkingSpace.fromMap(
+          Map<String, dynamic>.from(entry.value),
+        );
+
+        final distance = Geolocator.distanceBetween(
+          lat,
+          lng,
+          space.latitude,
+          space.longitude,
+        );
+        if (space.pricePerHour <= maxPrice && distance <= maxDistance) {
+          nearby.add(space);
+          final isBooked = space.availableSpots == 0;
+          newMarkers.add(
+            Marker(
+              markerId: MarkerId('custom-${entry.key}'),
+              position: LatLng(space.latitude, space.longitude),
+              infoWindow: InfoWindow(
+                title: space.address,
+                snippet:
+                '₹${space.pricePerHour}/hr • ${space.availableSpots} spots',
+              ),
+              icon:
+              isBooked
+                  ? BitmapDescriptor.defaultMarkerWithHue(
+                BitmapDescriptor.hueBlue,
+              )
+                  : BitmapDescriptor.defaultMarkerWithHue(
+                BitmapDescriptor.hueOrange,
+              ),
+            ),
+          );
+        }
+      }
+      customParkingLots = nearby;
+      markers = newMarkers;
+    } catch (e) {
+      print(e);
+    }
     notifyListeners();
   }
 
