@@ -83,10 +83,7 @@ class OwnerEndDrawer extends StatelessWidget {
           ),
           const Divider(),
           ListTile(
-            leading: const CircleAvatar(
-              backgroundImage: AssetImage('assets/images/blank_dp.png'),
-              radius: 11,
-            ),
+            leading: Icon(Icons.person),
             title: const Text("Profile"),
             onTap: () {
               Navigator.push(
